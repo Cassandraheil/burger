@@ -1,4 +1,43 @@
 body {
     background-color: aqua;
 }
+#burgerPic {
+    max-height: 350px;
+    max-width: 350px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+.create-form {
+    text-align: center;
+    border: 2px solid black;
+    display: block;
+    padding: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    max-width: 300px;
+}
+.notAte{
+    background: blue;
+    text-align: center;
+    padding: 15px;
+    float: left;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    max-width: 300px;
+}
+.eaten{
+    background-color: blueviolet;
+    text-align: center;
+    padding: 15px;
+    float: right;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    max-width: 300px;
+}
+
   

@@ -3,6 +3,7 @@ var router = express.Router();
 
 var burgerJS = require("../models/burgers");
 
+
 router.get("/", function (req, res) {
     burgerJS.selectAll(function (data) {
         var object = {
@@ -14,11 +15,14 @@ router.get("/", function (req, res) {
 });
 
 router.post("/api/burgers", function (req, res) {
-    burgerJS.insertOne([
+    burgerJS.insertOne(
+    [
         "burger_name", "devoured"
-    ], [
+    ], 
+    [
         req.body.burger_name, req.body.devoured
-    ], function (result) {
+    ],
+     function (result) {
         // Send back the ID of the new quote
         res.json({ id: result.insertId });
     });
