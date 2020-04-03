@@ -12,18 +12,13 @@ var orm = {
     },
 
 
-    insertOne: function (column, value, cb) {
-        var queryString = "INSERT INTO burgers (";
+    insertOne: function (value, cb) {
+        var queryString = "INSERT INTO burgers (burger_name) VALUES (?)";
 
-        queryString += column;
-        queryString += ") ";
-        queryString += "VALUES (";
-        queryString += questionMarks(value.length);
-        queryString += ") ";
+        // console.log(queryString)
+        console.log("values here ", value)
 
-        console.log(queryString);
-
-        connection.query(queryString, vals, function (err, result) {
+        connection.query(queryString, value, function (err, result) {
             if (err) {
                 throw err;
             }
@@ -31,15 +26,12 @@ var orm = {
         });
     },
 
-    updateOne: function (column, condition) {
-        var queryString = "UPDATE burgers SET ";
+    updateOne: function (value, cb) {
+        var queryString = "UPDATE burgers SET (?) WHERE (?)";
+        
+        console.log("condition we're looking for",  value);
 
-        queryString += objToSql(column);
-        queryString += " WHERE ";
-        queryString += condition;
-
-        console.log(queryString);
-        connection.query(queryString, function (err, result) {
+        connection.query(queryString, [{ devoured:value.devoured}, {id:value.id}], function (err, result) {
             if (err) {
                 throw err;
             }
@@ -49,30 +41,5 @@ var orm = {
     }
 };
 
-
-function objToSql(ob) {
-    var arr = [];
-    for (var key in ob) {
-        var value = ob[key];
-
-        if (Object.hasOwnProperty.call(ob, key)) {
-            if (typeof value === "string" && value.indexOf(" ") >= 0) {
-                value = "'" + value + "'";
-            }
-            arr.push(key + "=" + value);
-        }
-    }
-    return arr.toString();
-}
-
-function questionMarks(num) {
-    var arr = [];
-  
-    for (var i = 0; i < num; i++) {
-      arr.push("?");
-    }
-  
-    return arr.toString();
-  }
 
 module.exports = orm

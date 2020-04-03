@@ -1,23 +1,26 @@
 $(function () {
-    // $("#devour-burger").on("click", function (event) {
-    //     console.log("this was clicked")
+    $("#devour-burger").on("click", function (event) {
+        console.log("this was clicked")
 
-    //     var id = $(this).data("id");
-    //     var devour = $(this).data("devour");
+        var id = $(this).data("id");
+        var devour = $(this).data("devoured");
 
-    //     var changeDevoured = {
-    //         devoured: devour
-    //     };
+        var changeDevoured = {
+                devoured: devour,
+                id: id
+        };
 
-    //     $.ajax('/api/burgers/' + id, {
-    //             method: 'PUT',
-    //             data: changeDevoured
-    //         }).then(function () {
-    //             console.log("changed devoured to", devour)
+        
 
-    //             location.reload();
-    //         });
-    // });
+        $.ajax('/api/burgers/' + id, {
+                method: 'PUT',
+                data: changeDevoured
+            }).then(function () {
+                console.log("changed devoured to", devour)
+
+                location.reload();
+            });
+    });
 
 
     $(".create-form").on("submit", function(event){
