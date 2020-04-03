@@ -17,17 +17,19 @@ $(function () {
                 data: changeDevoured
             }).then(function () {
                 console.log("changed devoured to", devour)
-
+                
                 location.reload();
             });
-    });
+        });
 
+        
 
-    $(".create-form").on("submit", function(event){
-        event.preventDefault();
-
-        var newBurger = {
-            burger_name: $("#burger").val()
+        
+        $(".create-form").on("submit", function(event){
+            event.preventDefault();
+            
+            var newBurger = {
+                burger_name: $("#burger").val()
         };
         
         console.log("submit button clicked", newBurger)

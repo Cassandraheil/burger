@@ -26,12 +26,17 @@ var orm = {
         });
     },
 
-    updateOne: function (value, cb) {
-        var queryString = "UPDATE burgers SET (?) WHERE (?)";
-        
-        console.log("condition we're looking for",  value);
+    updateOne: function(value, condition, cb) {
+        var queryString = "UPDATE burgers SET ";
 
-        connection.query(queryString, [{ devoured:value.devoured}, {id:value.id}], function (err, result) {
+        queryString += makeString(value);
+        queryString += " WHERE ";
+        queryString += condition;
+
+        console.log("callback orm,", cb)
+        // console.log(queryString)
+
+        connection.query(queryString, function (err, result) {
             if (err) {
                 throw err;
             }
@@ -40,6 +45,21 @@ var orm = {
         });
     }
 };
+
+
+function makeString(ob) {
+    var arr = [];
+    for (var key in ob) {
+        var value = ob[key];
+        if (Object.hasOwnProperty.call(ob, key)) {
+            if (typeof value === "string" && value.indexOf(" ") >= 0) {
+                value = "'" + value + "'";
+            }
+            arr.push(key + "=" + value);
+        }
+    }
+    return arr.toString();
+}
 
 
 module.exports = orm

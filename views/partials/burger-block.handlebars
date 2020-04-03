@@ -3,8 +3,10 @@
     <p>  </p>
    <h1>{{burger_name}}</h1> 
     <p>   </p>
+    {{#if devoured}}
     <button id="devour-burger" data-id="{{id}}" data-devoured="{{devoured}}">
-        Devour!
+        Devour! 
     </button>
+    {{else}} That was Yummy!{{/if}}
     <p>   </p>
 </li>

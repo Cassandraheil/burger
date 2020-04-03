@@ -27,14 +27,11 @@ router.post("/api/burgers", function (req, res) {
 });
 
 router.put("/api/burgers/:id", function (req, res) {
-    var id = "id = " + req.params.id;
-
-    console.log("actually id", id);
+    var condition = "id = "+ req.params.id;
 
     burgerJS.updateOne({
-        devoured: req.body.devoured,
-        id: id
-    }, function (result) {
+        devoured: req.body.devoured
+    }, condition, function(result) {
         if (result.changedRows == 0) {
             return res.status(404).end();
         } else {

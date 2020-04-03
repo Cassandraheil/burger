@@ -13,11 +13,12 @@ var burger = {
     });
   },
 
-  updateOne: function (value, cb) {
-    orm.updateOne(value, function (res) {
+  updateOne: function(value, condition, cb) {
+    console.log("this is models cd, ", cb)
+    orm.updateOne(value, condition, function(res) {
       cb(res);
     });
-  },
+  }
 };
 
 
