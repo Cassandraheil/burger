@@ -1,17 +1,21 @@
 body {
-    background-color: aqua;
+    background-image: url(https://i.pinimg.com/736x/48/33/a1/4833a159996e2d0e982dfa3d6fbf7c0a.jpg);
 }
 #burgerPic {
     max-height: 350px;
     max-width: 350px;
     display: block;
+    margin-top: 10%;
     margin-left: auto;
     margin-right: auto;
     width: 50%;
+    border: 5px double black;
+    border-radius: 50px;
 }
 .create-form {
     text-align: center;
     border: 2px solid black;
+    background-color: khaki;
     display: block;
     padding: 15px;
     margin-left: auto;
@@ -20,24 +24,60 @@ body {
     max-width: 300px;
 }
 .notAte{
-    background: blue;
+    background-color: coral;
     text-align: center;
     padding: 15px;
     float: left;
-    margin-left: auto;
-    margin-right: auto;
+    /* margin-left: auto;
+    margin-right: auto; */
     width: 50%;
     max-width: 300px;
+    border: 10px dotted khaki;
+    border-radius: 30px;
 }
 .eaten{
-    background-color: blueviolet;
+    background-color: coral;
     text-align: center;
     padding: 15px;
     float: right;
-    margin-left: auto;
-    margin-right: auto;
+    /* margin-left: auto;
+    margin-right: auto; */
     width: 50%;
     max-width: 300px;
+    border: 7px dotted khaki;
+    border-radius: 30px;
 }
+.container {
+    max-width: 80%;
+    margin: auto;
+}
+
+@media screen and (max-width: 1300px) {
+    .container {
+        margin-bottom: 50px;
+    }
+     
+      .create-form{
+        float: none;
+        display: inline-block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 25%;
+      }
+      .eaten{
+          float: none;
+          display: inline-block;
+          margin-left: auto;
+          margin-right: auto;
+          width: 25%;
+      } 
+      .notAte{
+          float: none;
+          display: inline-block;
+          margin-left: auto;
+          margin-right: auto;
+          width: 25%;
+      }
+  }
 
   
